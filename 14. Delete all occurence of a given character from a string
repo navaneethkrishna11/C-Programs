@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char target;
+    int i, j;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("Enter the character to delete: ");
+    scanf("%c", &target);
+
+    printf("String after deleting '%c': ", target);
+    for (i = j = 0; str[i] != '\0'; i++) {
+        if (str[i] != target) {
+            str[j++] = str[i];
+        }
+    }
+    str[j] = '\0';
+
+    printf("%s\n", str);
+
+    return 0;
+}
+
+
+/**
+output
+--------
+Enter a string: vannapuram
+Enter the character to delete: n
+String after deleting 'n': vaapuram
+**/
