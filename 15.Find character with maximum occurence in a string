@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int count[256] = {0};
+    int maxCount = 0;
+    int i;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++) {
+        count[str[i]]++;
+        if (count[str[i]] > maxCount) {
+            maxCount = count[str[i]];
+        }
+    }
+
+    printf("Characters with maximum occurrence: ");
+    for (i = 0; str[i] != '\0'; i++) {
+        if (count[str[i]] == maxCount) {
+            printf("%c ", str[i]);
+            count[str[i]] = 0; // To avoid repetition
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
+
+/***
+output
+--------
+Enter a string: iam ironman
+Characters with maximum occurrence: i a m n 
+**/
