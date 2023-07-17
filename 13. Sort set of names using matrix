@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char names[100][100];
+    int numNames, i, j;
+
+    printf("Enter the number of names: ");
+    scanf("%d", &numNames);
+
+    if (numNames <= 0 || numNames > 100) {
+        printf("Invalid number of names!\n");
+        return 0;
+    }
+
+    printf("Enter the names:\n");
+    for (i = 0; i < numNames; i++) {
+        printf("Name %d: ", i + 1);
+        scanf("%s", names[i]);
+    }
+
+    // Sorting names using bubble sort algorithm
+    char temp[100];
+    for (i = 0; i < numNames - 1; i++) {
+        for (j = 0; j < numNames - i - 1; j++) {
+            if (strcmp(names[j], names[j + 1]) > 0) {
+                strcpy(temp, names[j]);
+                strcpy(names[j], names[j + 1]);
+                strcpy(names[j + 1], temp);
+            }
+        }
+    }
+
+    printf("Sorted names:\n");
+    for (i = 0; i < numNames; i++) {
+        printf("%s\n", names[i]);
+    }
+
+    return 0;
+}
+
+/**
+output
+-------
+Enter the number of names: 4
+Enter the names:
+Name 1: nivin
+Name 2: tovino
+Name 3: prithvi
+Name 4: srk
+Sorted names:
+nivin
+prithvi
+srk
+tovino
+**/
