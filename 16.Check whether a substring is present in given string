@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char substr[100];
+    int i, j, found;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("Enter a substring: ");
+    fgets(substr, sizeof(substr), stdin);
+
+    // Remove newline characters from the strings
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '\n') {
+            str[i] = '\0';
+            break;
+        }
+    }
+
+    for (i = 0; substr[i] != '\0'; i++) {
+        if (substr[i] == '\n') {
+            substr[i] = '\0';
+            break;
+        }
+    }
+
+    found = 0;
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] == substr[0]) {
+            j = 0;
+            while (substr[j] != '\0' && str[i + j] != '\0' && str[i + j] == substr[j]) {
+                j++;
+            }
+            if (substr[j] == '\0') {
+                found = 1;
+                break;
+            }
+        }
+    }
+
+    if (found) {
+        printf("Substring is present in the string.\n");
+    } else {
+        printf("Substring is not present in the string.\n");
+    }
+
+    return 0;
+}
+
+/**
+output
+-------
+Enter a string: universal
+Enter a substring: sal
+Substring is present in the string
+**/
