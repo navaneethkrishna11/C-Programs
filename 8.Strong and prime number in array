@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int main() {
+    int arr[100];
+    int size, i, j, num, digit, factorial, sum;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    printf("Enter the elements of the array:\n");
+    for (i = 0; i < size; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Strong numbers in the array: ");
+    for (i = 0; i < size; i++) {
+        num = arr[i];
+        sum = 0;
+
+        while (num > 0) {
+            digit = num % 10;
+            factorial = 1;
+
+            for (j = 2; j <= digit; j++) {
+                factorial *= j;
+            }
+
+            sum += factorial;
+            num /= 10;
+        }
+
+        if (sum == arr[i]) {
+            printf("%d ", arr[i]);
+        }
+    }
+    printf("\n");
+
+    printf("Prime numbers in the array: ");
+    for (i = 0; i < size; i++) {
+        num = arr[i];
+        int isPrime = 1;
+
+        if (num <= 1) {
+            isPrime = 0;
+        } else {
+            for (j = 2; j <= num / 2; j++) {
+                if (num % j == 0) {
+                    isPrime = 0;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            printf("%d ", arr[i]);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
