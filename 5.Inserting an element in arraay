@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+int main() {
+    int arr[MAX_SIZE];
+    int size, position, element, i;
+
+    printf("Enter the size of the array (maximum %d): ", MAX_SIZE);
+    scanf("%d", &size);
+
+    if (size >= MAX_SIZE || size < 0) {
+        printf("Invalid size!\n");
+        return 0;
+    }
+
+    printf("Enter the elements of the array:\n");
+    for (i = 0; i < size; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the position to insert the element (0 to %d): ", size);
+    scanf("%d", &position);
+
+    if (position < 0 || position > size) {
+        printf("Invalid position!\n");
+        return 0;
+    }
+
+    printf("Enter the element to be inserted: ");
+    scanf("%d", &element);
+
+    // Shift elements to the right to make room for the new element
+    for (i = size - 1; i >= position; i--) {
+        arr[i + 1] = arr[i];
+    }
+
+    // Insert the element at the given position
+    arr[position] = element;
+
+    size++; // Increase the size of the array
+
+    printf("Array after inserting the element:\n");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
