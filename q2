@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+int main() {
+    int matrix[10][10];
+    int rows, columns;
+    int row_sum[10] = {0};
+    int col_sum[10] = {0};
+    int trace = 0;
+
+    printf("Enter the number of rows (maximum 10): ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns (maximum 10): ");
+    scanf("%d", &columns);
+
+    // Input matrix elements
+    printf("Enter the matrix elements:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            scanf("%d", &matrix[i][j]);
+            row_sum[i] += matrix[i][j];
+            col_sum[j] += matrix[i][j];
+            if (i == j) {
+                trace += matrix[i][j];
+            }
+        }
+    }
+
+    // Display the matrix
+    printf("The entered matrix is:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Display row-wise sum
+    printf("Row-wise sum:\n");
+    for (int i = 0; i < rows; i++) {
+        printf("Row %d: %d\n", i + 1, row_sum[i]);
+    }
+
+    // Display column-wise sum
+    printf("Column-wise sum:\n");
+    for (int j = 0; j < columns; j++) {
+        printf("Column %d: %d\n", j + 1, col_sum[j]);
+    }
+
+    // Display trace
+    printf("Trace of the matrix: %d\n", trace);
+
+    return 0;
+}
